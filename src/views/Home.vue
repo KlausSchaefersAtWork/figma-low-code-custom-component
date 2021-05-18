@@ -1,9 +1,23 @@
 <template>
   <div class="home">
-    <Figma :figma="figmaConfig" v-model="viewModel" :config="config"/>
+    <Figma :figma="figmaJSON" v-model="viewModel" :config="config"/>
+<pre>{{viewModel}}</pre>
+
   </div>
+
+
 </template>
 
+<style>
+  pre {
+    position: fixed;
+    right:0px;
+    top:0px;
+    background: orange;
+    width: 200px;
+    color:#fff;
+  }
+</style>
 
 <script>
 import Vue from "vue";
@@ -11,21 +25,20 @@ import Figma from "vue-low-code";
 Vue.use(Figma);
 
 // import JSON file for deployment
-// import app from './app.json'
+import app from './app.json'
+import MyComponent from './MyComponent'
 
 export default {
   name: "Home",
   data: function () {
     return {
-      // figmaJSON: app,
+      figmaJSON: app,
       figmaConfig: {
         figmaFile: "",
         figmaAccessKey: "",
       },
       viewModel: {
-        /**
-         * Add your view model here
-         */
+        tags: ['Klaus', 'was', 'here']
       },
       config: {
         responsive: [
@@ -33,9 +46,7 @@ export default {
           { value: "Mobile", label: "Mobile", types: ["tablet", "mobile"] },
         ],
         components: {
-          /**
-           * Register costum components here
-           */
+          'MyComponent': MyComponent
         },
       },
     };
