@@ -1,8 +1,6 @@
 <template>
   <div class="home">
     <Figma :figma="figmaJSON" v-model="viewModel" :config="config"/>
-<pre>{{viewModel}}</pre>
-
   </div>
 
 
